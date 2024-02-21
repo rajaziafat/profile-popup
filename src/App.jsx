@@ -57,7 +57,7 @@ function App() {
   const backend = isTouchDevice() ? TouchBackend : HTML5Backend;
 
   return (
-    <div className='flex justify-center items-center h-auto md:h-screen '>
+    <div className='flex justify-center items-center h-screen '>
       <button onClick={() => setIsModalOpen(true)} className=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
         Open Modal
       </button>

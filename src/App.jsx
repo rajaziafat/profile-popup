@@ -23,12 +23,7 @@ function App() {
     { id: 6, name: 'Galamour6', },
     { id: 7, name: 'Galamour7', },
     { id: 8, name: 'Galamou8', },
-    { id: 9, name: 'Galamour9', },
-    { id: 10, name: 'Galamour10', },
-    { id: 11, name: 'Galamour11', },
-    { id: 12, name: 'Galamour12', },
-    { id: 13, name: 'Galamour13', },
-    { id: 14, name: 'Galamour14', },
+
 
 
   ]);
@@ -66,7 +61,7 @@ function App() {
       {isModalOpen && (
         <Modal closeModal={() => setIsModalOpen(false)} onSave={handleSave}>
           <DndProvider backend={backend}>
-            <div className=" gap-2 flex flex-wrap justify-center  ">
+            <div className=" gap-2 flex flex-wrap  h-auto ">
               {cards.map((card, index) => (
                 <Card
                   key={card.id}

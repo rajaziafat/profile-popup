@@ -46,10 +46,10 @@ const Card = ({ id, name, description, index, moveCard, img }) => {
     };
 
     return (
-        <div ref={node => drag(drop(node))} style={{ opacity }} className={` ${!isGrid1 ? 'w-full bg-blue-200' : 'w-[250px]'}`}>
+        <div ref={node => drag(drop(node))} style={{ opacity }} className={` ${!isGrid1 ? 'w-full duration-300 bg-[#2ab57c] rounded-lg ' : ' min-w-[150px]  duration-300 md:w-[275px]'}`}>
             <div>
-                <div className='bg-[#333] backdrop-blur-md border border-[#333] bg-opacity-25 flex gap-2 justify-between items-center md:gap-4 px-2 py-4  cursor-pointer'>
-                    <div className='flex  items-center space-x-1 md:space-x-2'>
+                <div className='bg-[#333]  backdrop-blur-md border border-[#2ab57c] bg-opacity-25 flex  justify-between items-center rounded-lg  px-2 py-3  cursor-pointer'  onClick={toggleGrid}>
+                    {/* <div className='flex  items-center space-x-1 md:space-x-2'>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4  md:w-6 md:h-6 text-white cursor-pointer">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M3 7.5 7.5 3m0 0L12 7.5M7.5 3v13.5m13.5 0L16.5 21m0 0L12 16.5m4.5 4.5V7.5" />
                         </svg>
@@ -66,12 +66,12 @@ const Card = ({ id, name, description, index, moveCard, img }) => {
                                 </div>
                             </>
                         )}
-                    </div>
-                    <div>
+                    </div> */}
+                    <div className='flex justify-center'>
                         <p className='text-white text-xs md:text-[16px]'>{name}</p>
                     </div>
                     <div className='flex justify-end min-w-4  md:min-w-[32px]'>
-                        <div className="cursor-pointer" onClick={toggleGrid}>
+                        <div className="cursor-pointer">
                             <p className="text-white text-xs md:text-lg font-bold">{isGrid1 ? '1²' : '1'}</p>
                         </div>
                     </div>

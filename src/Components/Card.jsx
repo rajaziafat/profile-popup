@@ -29,7 +29,7 @@ const Card = ({ id, name }) => {
                 break;
             default:
                 // Default case (should not be reached)
-                newStyle = 'min-w-[150px] md:w-[275px] bg-[#333]';
+                newStyle = ' min-w-[150px] md:w-[275px] bg-[#333]';
                 break;
         }
         setCardStyle(newStyle);
@@ -38,9 +38,9 @@ const Card = ({ id, name }) => {
     return (
         <div
             onClick={toggleCardState}
-            className={`${cardStyle} cursor-pointer border border-[#2ab57c] rounded-lg transition-all duration-300 ease-in-out`}
+            className={`${cardStyle} cursor-pointer border min-w-[150px] border-[#2ab57c] rounded-lg transition-all duration-300 ease-in-out`}
         >
-            <p className="text-white text-xs md:text-lg px-4 py-2">
+            <p className="text-white text-md md:text-lg px-4 py-2">
                 {name}
             </p>
         </div>

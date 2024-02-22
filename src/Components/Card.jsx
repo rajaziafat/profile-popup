@@ -1,82 +1,48 @@
 import React, { useState } from 'react';
-import { useDrag, useDrop } from 'react-dnd';
-import { ItemTypes } from '../ItemTypes'; // Import your item types
-import { FaRegEyeSlash } from "react-icons/fa";
-import { IoEyeOutline } from "react-icons/io5";
 
-const Card = ({ id, name, description, index, moveCard, img }) => {
-    const [{ isDragging }, drag] = useDrag({
-        type: ItemTypes.CARD,
-        item: { id, index },
-        collect: monitor => ({
-            isDragging: monitor.isDragging(),
-        }),
-    });
+const Card = ({ id, name }) => {
+    const [clickCount, setClickCount] = useState(0);
+    const [cardStyle, setCardStyle] = useState('min-w-[150px] md:w-[275px] bg-[#333]');
 
-    const [, drop] = useDrop({
-        accept: ItemTypes.CARD,
-        hover(item) {
-            if (!drag) {
-                return;
-            }
-            const dragIndex = item.index;
-            const hoverIndex = index;
+    const toggleCardState = () => {
+        let newStyle;
+        const newClickCount = (clickCount + 1) % 3; // Cycles through every 3 clicks
+        setClickCount(newClickCount);
 
-            if (dragIndex === hoverIndex) {
-                return;
-            }
+        switch (newClickCount) {
+            case 0:
+                // On 3rd click, revert to original bg color, keep expanded width
+                newStyle = 'min-w-[150px] md:w-[275px] bg-[#333]';
 
-            moveCard(dragIndex, hoverIndex);
-            item.index = hoverIndex;
-        },
-    });
-
-    const opacity = isDragging ? 0.5 : 1;
-
-    const [isOpen, setIsOpen] = useState(false);
-
-    const toggleIcon = () => {
-        setIsOpen(!isOpen);
-    };
-
-    const [isGrid1, setIsGrid1] = useState(true);
-
-    const toggleGrid = () => {
-        setIsGrid1(!isGrid1);
+                break;
+            case 1:
+                // On 1st click, change bg color and width
+                newStyle = 'w-full bg-[#2ab57c]';
+                break;
+            case 2:
+                // On 2nd click, revert to original width, keep changed bg color
+                newStyle = 'min-w-[150px] md:w-[275px] bg-[#2ab57c]';
+                break;
+            case 3:
+                // On 2nd click, revert to original width, keep changed bg color
+                newStyle = 'min-w-[150px] md:w-[275px] bg-[#333]';
+                break;
+            default:
+                // Default case (should not be reached)
+                newStyle = 'min-w-[150px] md:w-[275px] bg-[#333]';
+                break;
+        }
+        setCardStyle(newStyle);
     };
 
     return (
-        <div ref={node => drag(drop(node))} style={{ opacity }} className={` ${!isGrid1 ? 'w-full duration-300 bg-[#2ab57c] rounded-lg ' : ' min-w-[150px]  duration-300 md:w-[275px]'}`}>
-            <div>
-                <div className='bg-[#333]  backdrop-blur-md border border-[#2ab57c] bg-opacity-25 flex  justify-between items-center rounded-lg  px-2 py-3  cursor-pointer'  onClick={toggleGrid}>
-                    {/* <div className='flex  items-center space-x-1 md:space-x-2'>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4  md:w-6 md:h-6 text-white cursor-pointer">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M3 7.5 7.5 3m0 0L12 7.5M7.5 3v13.5m13.5 0L16.5 21m0 0L12 16.5m4.5 4.5V7.5" />
-                        </svg>
-                        {isOpen ? (
-                            <>
-                                <div onClick={toggleIcon}>
-                                    <FaRegEyeSlash className='w-4 h-4  md:w-6 md:h-6 text-white cursor-pointer' />
-                                </div>
-                            </>
-                        ) : (
-                            <>
-                                <div onClick={toggleIcon}>
-                                    <IoEyeOutline className='w-4 h-4  md:w-6 md:h-6 text-white cursor-pointer' />
-                                </div>
-                            </>
-                        )}
-                    </div> */}
-                    <div className='flex justify-center'>
-                        <p className='text-white text-xs md:text-[16px]'>{name}</p>
-                    </div>
-                    <div className='flex justify-end min-w-4  md:min-w-[32px]'>
-                        <div className="cursor-pointer">
-                            <p className="text-white text-xs md:text-lg font-bold">{isGrid1 ? '1²' : '1'}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div
+            onClick={toggleCardState}
+            className={`${cardStyle} cursor-pointer border border-[#2ab57c] rounded-lg transition-all duration-300 ease-in-out`}
+        >
+            <p className="text-white text-xs md:text-lg px-4 py-2">
+                {name}
+            </p>
         </div>
     );
 };

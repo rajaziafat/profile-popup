@@ -61,7 +61,7 @@ function App() {
       {isModalOpen && (
         <Modal closeModal={() => setIsModalOpen(false)} onSave={handleSave}>
           <DndProvider backend={backend}>
-            <div className=" gap-2 flex flex-wrap  h-auto ">
+            <div className=" gap-2 flex flex-wrap   h-auto ">
               {cards.map((card, index) => (
                 <Card
                   key={card.id}

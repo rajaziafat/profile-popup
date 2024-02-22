@@ -2,9 +2,9 @@ import React from 'react';
 
 function Modal({ children, closeModal, onSave, isGrid1, toggleGrid }) {
     return (
-        <div className="fixed inset-0 z-50 overflow-x-auto bg-gray-800 md:flex items-center justify-center  bg-opacity-75 px-4 py-4">
+        <div className="fixed inset-0 z-50 overflow-x-auto bg-gray-800 md:flex items-center justify-center   bg-opacity-75 px-4 py-4">
 
-            <div className="bg-[#333]  rounded-lg max-w-xl  max-h-full overflow-y-auto pb-4">
+            <div className="bg-[#333]  rounded-lg max-w-xl  max-h-full overflow-y-auto pb-4 ">
 
                 <div className='bg-[#333] py-2 px-2 text-white  flex justify-between '>
                     <p className='text-center text-lg md:text-2xl font-medium'>Profile Layout Setup</p>

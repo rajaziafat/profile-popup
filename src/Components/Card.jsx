@@ -56,16 +56,16 @@ const Card = ({ id, name, index, moveCard }) => {
     let clickStyle;
     switch (clickCount % 3) { // Use modulo for cycling through the clicks
         case 0:
-            clickStyle = 'w-[40%] bg-[#333]'; // Default state
+            clickStyle = 'w-[48%] bg-[#333]'; // Default state
             break;
         case 1:
             clickStyle = 'w-[100%] bg-[#2ab57c]'; // First click state
             break;
         case 2:
-            clickStyle = 'w-[40%]  bg-[#2ab57c]'; // Second click state
+            clickStyle = 'w-[48%]  bg-[#2ab57c]'; // Second click state
             break;
         default:
-            clickStyle = 'w-[40%]  bg-[#333]'; // Fallback state (should not be reached)
+            clickStyle = 'w-[48%]  bg-[#333]'; // Fallback state (should not be reached)
     }
 
     const toggleCardState = () => {
@@ -73,7 +73,7 @@ const Card = ({ id, name, index, moveCard }) => {
     };
 
     return (
-        <div ref={combinedRef} onClick={toggleCardState} className={`border min-w-[49%] border-[#2ab57c] rounded-lg transition-all duration-300 ease-in-out ${clickStyle} ${draggingStyle} cursor-pointer `}>
+        <div ref={combinedRef} onClick={toggleCardState} className={`border  min-w-[40%] border-[#2ab57c] rounded-lg transition-all duration-300 ease-in-out ${clickStyle} ${draggingStyle} cursor-pointer `}>
             <p className="text-white text-md md:text-lg px-4 py-2 w-[150px]">
                 {name}
             </p>

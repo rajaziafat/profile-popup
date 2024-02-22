@@ -59,7 +59,7 @@ const Card = ({ id, name, index, moveCard }) => {
             clickStyle = 'w-[48%] bg-[#333]'; // Default state
             break;
         case 1:
-            clickStyle = 'w-[100%] bg-[#2ab57c]'; // First click state
+            clickStyle = 'w-[98%] bg-[#2ab57c]'; // First click state
             break;
         case 2:
             clickStyle = 'w-[48%]  bg-[#2ab57c]'; // Second click state

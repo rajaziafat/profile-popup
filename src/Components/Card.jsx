@@ -50,7 +50,7 @@ const Card = ({ id, name, index, moveCard }) => {
     preview(drop(ref));
 
     // Dragging style
-    let draggingStyle = isDragging ? 'opacity-50' : 'opacity-100';
+    let draggingStyle = isDragging ? 'opacity-30' : 'opacity-100';
 
     // Click-based style
     let clickStyle;
@@ -61,9 +61,11 @@ const Card = ({ id, name, index, moveCard }) => {
         case 1:
             clickStyle = 'w-[98%] bg-[#2ab57c]'; // First click state
             break;
+            
         case 2:
             clickStyle = 'w-[48%]  bg-[#2ab57c]'; // Second click state
             break;
+            
         default:
             clickStyle = 'w-[48%]  bg-[#333]'; // Fallback state (should not be reached)
     }
